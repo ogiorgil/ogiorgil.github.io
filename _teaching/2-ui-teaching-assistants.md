@@ -4,7 +4,7 @@ collection: teaching
 type: "Undergraduate course"
 permalink: /teaching/ui-teaching-assistants
 venue: "University of Indonesia, Faculty of Computer Science"
-date: 2021-01-01 -- 2023-01-01
+date: 2021 to 2023
 location: "Depok, Indonesia"
 ---
 
