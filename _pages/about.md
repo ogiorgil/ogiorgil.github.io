@@ -15,4 +15,4 @@ Systems, databases, distributed systems, infrastructure.
 
 ## Publications
 
-- Pneuma: Leveraging LLMs for Tabular Data Representation and Retrieval in an End-to-End System. Under submission to SIGMOD 2025. The manuscript is available upon request.
+- Pneuma: Leveraging LLMs for Tabular Data Representation and Retrieval in an End-to-End System. Accepted with shepherding to SIGMOD 2025. The manuscript is available upon request.
