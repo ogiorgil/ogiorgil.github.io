@@ -35,10 +35,6 @@ body {
   line-height: 1.5;
 }
 
-body.overflow--hidden {
-  overflow: hidden;
-}
-
 ::selection {
   color: #fff;
   background: #000;
@@ -49,31 +45,6 @@ img {
   height: auto;
   vertical-align: middle;
   border: 0;
-}
-
-sub,
-sup {
-  position: relative;
-  font-size: 75%;
-  line-height: 0;
-  vertical-align: baseline;
-}
-
-sup {
-  top: -0.5em;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-button,
-input,
-select,
-textarea {
-  margin: 0;
-  font-size: 100%;
-  vertical-align: middle;
 }
 
 /* ---------- Typography ---------- */
@@ -133,57 +104,6 @@ a:focus {
 a:hover,
 a:active {
   outline: 0;
-}
-
-blockquote {
-  margin: 2em 1em 2em 0;
-  padding-left: 1em;
-  padding-right: 1em;
-  font-style: italic;
-  border-left: 0.25em solid #7a8288;
-}
-
-tt,
-code,
-kbd,
-samp,
-pre {
-  font-family: Monaco, Consolas, "Lucida Console", monospace;
-}
-
-pre {
-  overflow-x: auto;
-}
-
-p>code,
-a>code,
-li>code,
-figcaption>code,
-td>code {
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
-  font-size: 0.75em;
-  background: #fafafa;
-  border: 1px solid #f2f3f3;
-  border-radius: 4px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
-}
-
-p>code::before,
-p>code::after,
-a>code::before,
-a>code::after,
-li>code::before,
-li>code::after {
-  letter-spacing: -0.2em;
-  content: "\00a0";
-}
-
-hr {
-  display: block;
-  margin: 1em 0;
-  border: 0;
-  border-top: 1px solid #f2f3f3;
 }
 
 ul li,
@@ -256,8 +176,8 @@ a,
 #main {
   max-width: 1280px;
   margin: 2em auto 0;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
   animation: intro 0.3s both;
   animation-delay: 0.35s;
 }
@@ -312,7 +232,7 @@ a,
 .masthead__inner-wrap {
   max-width: 925px;
   margin: 0 auto;
-  padding: 1em;
+  padding: 1em 2em;
   font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto",
     "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
 }
@@ -843,7 +763,7 @@ a,
 .page__footer footer {
   margin: 1em auto 0;
   max-width: 100%;
-  padding: 0 1em 1em;
+  padding: 0 2em 1em;
 }
 
 .page__footer footer::after {
@@ -988,20 +908,10 @@ a,
 }
 
 /* Social icon brand colors */
-.social-icons .fa-bluesky,
-.social-icons .fa-bluesky-square {
-  color: #1184fe;
-}
-
 .social-icons .fa-github,
 .social-icons .fa-github-alt,
 .social-icons .fa-github-square {
   color: #171516;
-}
-
-.social-icons .fa-linkedin,
-.social-icons .fa-linkedin-square {
-  color: #007bb6;
 }
 
 .social-icons .ai-orcid,
@@ -1012,55 +922,6 @@ a,
 .social-icons .fa-rss,
 .social-icons .fa-rss-square {
   color: #fa9b39;
-}
-
-.social-icons .fa-x-twitter {
-  color: #55acee;
-}
-
-.social-icons .fa-facebook,
-.social-icons .fa-facebook-square {
-  color: #3b5998;
-}
-
-.social-icons .fa-google-plus,
-.social-icons .fa-google-plus-square {
-  color: #dd4b39;
-}
-
-.social-icons .fa-instagram {
-  color: #517fa4;
-}
-
-.social-icons .fa-mastodon,
-.social-icons .fa-mastodon-square {
-  color: #6364ff;
-}
-
-.social-icons .fa-pinterest,
-.social-icons .fa-pinterest-p,
-.social-icons .fa-pinterest-square {
-  color: #cb2027;
-}
-
-.social-icons .fa-youtube,
-.social-icons .fa-youtube-square,
-.social-icons .fa-youtube-play {
-  color: #bb0000;
-}
-
-.social-icons .fa-soundcloud {
-  color: #ff3300;
-}
-
-.social-icons .fa-stack-exchange,
-.social-icons .fa-stack-overflow {
-  color: #fe7a15;
-}
-
-.social-icons .fa-kaggle,
-.social-icons .fa-kaggle-square {
-  color: #20c0ff;
 }
 
 /* Navicon (hamburger menu) */
@@ -1111,17 +972,3 @@ a,
   transform: rotate3d(0, 0, 1, -45deg);
 }
 
-/* Page meta */
-.page__meta {
-  margin-top: 2em;
-  color: #9ba1a6;
-  font-size: 0.75em;
-}
-
-.page__meta p {
-  margin: 0;
-}
-
-.page__meta a {
-  color: inherit;
-}

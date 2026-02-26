@@ -7,7 +7,9 @@ redirect_from:
   - /about.html
 ---
 
-I am a first year PhD student advised by [Magda Balazinska](https://db.cs.washington.edu/people/magda) in the [database group](https://db.cs.washington.edu/) at the University of Washington.
+I am a first year PhD student advised by [Magda Balazinska](https://db.cs.washington.edu/people/magda) in the [database group](https://db.cs.washington.edu/) at the University of Washington. My current research explores how one can improve the interaction of AI agents with data.
+
+Before starting my PhD, I worked as a software engineer at a Singaporean startup. I received my Bachelor's degree from University of Indonesia.
 
 ## Publications
 
