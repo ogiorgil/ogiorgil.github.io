@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I am a first year Ph.D. student in the database group at University of Washington. I am advised by [Magda Balazinska](https://db.cs.washington.edu/people/magda).
+I am a first year PhD student advised by [Magda Balazinska](https://db.cs.washington.edu/people/magda) in the [database group](https://db.cs.washington.edu/) at the University of Washington
 
 ## Research Interests
 
