@@ -7,15 +7,13 @@ redirect_from:
   - /about.html
 ---
 
-I am a first year PhD student advised by [Magda Balazinska](https://db.cs.washington.edu/people/magda) in the [database group](https://db.cs.washington.edu/) at the University of Washington
-
-## Research Interests
-
-Systems, databases, distributed systems, infrastructure.
+I am a first year PhD student advised by [Magda Balazinska](https://db.cs.washington.edu/people/magda) in the [database group](https://db.cs.washington.edu/) at the University of Washington.
 
 ## Publications
 
-- Pneuma: Leveraging LLMs for Tabular Data Representation and Retrieval in an End-to-End System. Accepted to SIGMOD 2025.
+**Pneuma: Leveraging LLMs for Tabular Data Representation and Retrieval in an End-to-End System**
+: Muhammad Imam Luthfi Balaka, **David Alexander**, Qiming Wang, Yue Gong, Adila Krisnadhi, Raul Castro Fernandez
+: SIGMOD 2025 [[ACM]](https://dl.acm.org/doi/10.1145/3725337) [[arXiv]](https://arxiv.org/abs/2504.09207) [[Code]](https://github.com/TheDataStation/pneuma)
 
 ## Teaching Experience
 
