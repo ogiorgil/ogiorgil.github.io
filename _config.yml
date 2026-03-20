@@ -131,7 +131,6 @@ exclude:
   - CHANGELOG
   - Capfile
   - config
-  - Dockerfile
   - Gemfile
   - Gruntfile.js
   - gulpfile.js
@@ -139,7 +138,6 @@ exclude:
   - local
   - log
   - node_modules
-  - package.json*
   - Rakefile
   - README
   - tmp
