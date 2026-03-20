@@ -1,0 +1,35 @@
+name: Deploy to CSE homes
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch: # allow manual trigger
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
+
+      - name: Deploy to CSE homes
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.CSE_SSH_PRIVATE_KEY }}
+          CSE_USERNAME: ${{ vars.CSE_USERNAME }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H recycle.cs.washington.edu >> ~/.ssh/known_hosts 2>/dev/null
+
+          rsync -avz --delete \
+            -e "ssh -o StrictHostKeyChecking=accept-new" \
+            _site/ \
+            "${CSE_USERNAME}@recycle.cs.washington.edu:/cse/web/homes/${CSE_USERNAME}/"
