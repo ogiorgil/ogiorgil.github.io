@@ -1,12 +1,28 @@
 name: Deploy to CSE homes
 
+# CSE rejects SSH from GitHub-hosted runners; deploy needs a runner on the UW network.
+# See .github/DEPLOY-CSE.md.
+
 on:
   push:
     branches: [master]
-  workflow_dispatch: # allow manual trigger
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'deploy = sync files, dry-run = show rsync changes, check = diagnostics only'
+        type: choice
+        options: [deploy, dry-run, check]
+        default: deploy
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-cse
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,17 +35,50 @@ jobs:
       - name: Build Jekyll site
         run: bundle exec jekyll build
 
-      - name: Deploy to CSE homes
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.CSE_SSH_PRIVATE_KEY }}
-          CSE_USERNAME: ${{ vars.CSE_USERNAME }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H recycle.cs.washington.edu >> ~/.ssh/known_hosts 2>/dev/null
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
 
-          rsync -avz --delete \
-            -e "ssh -o StrictHostKeyChecking=accept-new" \
-            _site/ \
-            "${CSE_USERNAME}@recycle.cs.washington.edu:/cse/web/homes/${CSE_USERNAME}/"
+  deploy:
+    needs: build
+    # Stays queued until a matching runner is online. Override via CSE_DEPLOY_RUNNER (JSON).
+    runs-on: ${{ fromJSON(vars.CSE_DEPLOY_RUNNER || '["self-hosted", "cse-deploy"]') }}
+    environment: cse-homes
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: _site
+
+      - name: Network and SSH diagnostics
+        env:
+          CSE_USERNAME: ${{ vars.CSE_USERNAME }}
+          CSE_HOST: ${{ vars.CSE_HOST }}
+          CSE_SSH_KNOWN_HOSTS: ${{ vars.CSE_SSH_KNOWN_HOSTS }}
+          CSE_SSH_PRIVATE_KEY: ${{ secrets.CSE_SSH_PRIVATE_KEY }}
+        run: bash .github/scripts/deploy-cse.sh --check
+
+      - name: Deploy to CSE homes
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.mode != 'check' }}
+        env:
+          CSE_USERNAME: ${{ vars.CSE_USERNAME }}
+          CSE_HOST: ${{ vars.CSE_HOST }}
+          CSE_SSH_KNOWN_HOSTS: ${{ vars.CSE_SSH_KNOWN_HOSTS }}
+          CSE_SSH_PRIVATE_KEY: ${{ secrets.CSE_SSH_PRIVATE_KEY }}
+          MODE: ${{ inputs.mode || 'deploy' }}
+        run: |
+          if [ "$MODE" = dry-run ]; then
+            bash .github/scripts/deploy-cse.sh --dry-run
+          else
+            bash .github/scripts/deploy-cse.sh
+          fi
