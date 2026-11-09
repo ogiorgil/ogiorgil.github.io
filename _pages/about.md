@@ -9,9 +9,13 @@ redirect_from:
 
 I am a first year PhD student advised by [Magda Balazinska](https://db.cs.washington.edu/people/magda) in the [database group](https://db.cs.washington.edu/) at the University of Washington. My research focuses on rethinking how AI agents interact with data, enabling them to more effectively reason over and analyze complex, real-world datasets.
 
-Before starting my PhD, I worked as a software engineer at a Singaporean startup. I received my Bachelor's degree from University of Indonesia.
+Before starting my PhD, I worked as a software engineer at a startup in Singapore. I received my Bachelor's degree from University of Indonesia.
 
 ## Publications
+
+**Bad Memory: Evaluating Prompt Injection Risks from Memory in Agentic Systems**
+: Soham Gadgil\*, **David Alexander**\*, Sai Sunku, Franziska Roesner
+: arXiv preprint 2026 (\*equal contribution) [[arXiv]](https://arxiv.org/abs/2607.14611)
 
 **Pneuma: Leveraging LLMs for Tabular Data Representation and Retrieval in an End-to-End System**
 : Muhammad Imam Luthfi Balaka, **David Alexander**, Qiming Wang, Yue Gong, Adila Krisnadhi, Raul Castro Fernandez
